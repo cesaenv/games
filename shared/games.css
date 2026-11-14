@@ -66,6 +66,12 @@ a:hover {
   display: none;
 }
 
+/* Sin barras de desplazamiento: un píxel de más por redondeo las haría aparecer */
+.demo,
+.demo body {
+  overflow: hidden;
+}
+
 .demo body {
   min-height: 0;
   background: var(--surface);

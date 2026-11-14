@@ -5,6 +5,7 @@ Juegos pequeños para jugar en el navegador, hechos con HTML, CSS y JavaScript. 
 Por ahora:
 
 - 2048
+- Snake
 
 ## Cómo está organizado
 
@@ -42,3 +43,7 @@ Si guarda cosas en `localStorage`, la clave tiene que llevar un prefijo propio (
 ## Sobre el 2048
 
 Es la versión web de mi proyecto 2048 del máster (la carpeta `docs/`). Incluye tres jugadores automáticos (Random, Algorithm y Smart), escritos en JavaScript, que usan el panel de `shared/autoplay.js`. La versión de escritorio en Python y el entrenamiento de la red neuronal siguen solo en el otro proyecto.
+
+## Sobre el Snake
+
+Tiene tres jugadores automáticos. Random elige al azar entre las direcciones en las que no choca al momento. Algorithm va por el camino más corto a la comida. Smart sigue un recorrido que pasa por todas las casillas y se salta trozos cuando puede, así que acaba llenando el tablero.

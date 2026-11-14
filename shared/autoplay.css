@@ -1,0 +1,72 @@
+/* Panel de jugador automático (shared/autoplay.js). Solo usa variables del tema. */
+.auto-panel {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.auto-title {
+  margin: 0 0 0.875rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.auto-group {
+  margin-bottom: 0.875rem;
+}
+
+.auto-label {
+  display: block;
+  margin-bottom: 0.375rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.auto-choice {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  background: var(--bg);
+}
+
+.auto-choice button {
+  flex: 1;
+  padding: 0.45rem 0.125rem;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.auto-choice button:hover {
+  color: var(--text);
+}
+
+.auto-choice button[aria-pressed='true'] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.auto-button {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.6rem 1.1rem;
+  border: 2px solid var(--accent);
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auto-button:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}

@@ -1,0 +1,364 @@
+/* Colores del tema de la web (theme.css), con los nombres que usa este juego */
+:root {
+  --background: var(--bg);
+  --board-background: var(--border);
+  --empty-cell: var(--surface);
+  --panel: var(--surface);
+  --panel-border: var(--border);
+  --title: var(--accent);
+  --text-soft: var(--text);
+  --text-muted: var(--muted);
+  --shadow: none;
+  --overlay: rgba(0, 0, 0, 0.6);
+  --hover-tint: color-mix(in srgb, var(--text) 8%, transparent);
+
+  /* fichas: más mostaza cuanto mayor es el valor */
+  --tile-2: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  --tile-4: color-mix(in srgb, var(--accent) 18%, var(--surface));
+  --tile-8: color-mix(in srgb, var(--accent) 30%, var(--surface));
+  --tile-16: color-mix(in srgb, var(--accent) 42%, var(--surface));
+  --tile-32: color-mix(in srgb, var(--accent) 54%, var(--surface));
+  --tile-64: color-mix(in srgb, var(--accent) 66%, var(--surface));
+  --tile-128: color-mix(in srgb, var(--accent) 76%, var(--surface));
+  --tile-256: color-mix(in srgb, var(--accent) 84%, var(--surface));
+  --tile-512: color-mix(in srgb, var(--accent) 90%, var(--surface));
+  --tile-1024: color-mix(in srgb, var(--accent) 95%, var(--surface));
+  --tile-2048: var(--accent);
+  --tile-mid-fg: var(--accent-contrast); /* 32 y 64 */
+}
+
+:root[data-theme='light'] {
+  --tile-mid-fg: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+}
+
+.page {
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Keeps the board + sidebar at their original, comfortable width even though
+   .page is now wider (the panels below stretch to use that extra width). */
+.game-area {
+  width: 100%;
+  max-width: 730px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Matches the board's natural size (4 cells x 100px + 5 gaps x 10px) so the
+     responsive cell-size calculation in app.js lands on an exact fit. */
+  width: min(450px, 100%);
+}
+
+/* ------------------------------------------------------------------ header */
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--title);
+  margin: 0;
+}
+
+.score-panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 0;
+  padding: 6px 18px;
+  text-align: center;
+  min-width: 78px;
+  box-shadow: var(--shadow);
+}
+
+.score-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.score-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------------- board */
+
+.board {
+  position: relative;
+  background: var(--board-background);
+  border-radius: 0;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  box-shadow: var(--shadow);
+}
+
+.cell {
+  position: absolute;
+  border-radius: 0;
+  background: var(--empty-cell);
+}
+
+.tile {
+  position: absolute;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  transform: scale(1);
+}
+
+.status {
+  min-height: 1.4em;
+  margin: 14px 0 0;
+  font-weight: 700;
+  color: var(--title);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------- sidebar */
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 66px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 0;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.panel-title {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-soft);
+}
+
+/* -------------------------------------------------------------------- btn */
+
+.btn {
+  border: 2px solid var(--accent);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.6rem 1.1rem;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.05s ease;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--text);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.btn-ghost:hover {
+  background: var(--hover-tint);
+  color: var(--text);
+}
+
+/* ----------------------------------------------------------------- modes */
+
+.guide-layout {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.guide-layout > .panel {
+  flex: 1;
+  min-width: 0;
+}
+
+/* -------------------------------------------------------------- AI modes */
+
+.modes-guide-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mode-guide-item {
+  padding: 10px 12px;
+  border-radius: 0;
+  border: 1px solid transparent;
+}
+
+.mode-guide-item.active {
+  background: var(--hover-tint);
+  border-color: var(--panel-border);
+}
+
+.mode-guide-name {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--title);
+}
+
+.mode-guide-description {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------------- modal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--overlay);
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  width: 100%;
+  max-width: 340px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 0;
+  padding: 28px;
+  text-align: center;
+  animation: modal-pop 0.18s ease;
+}
+
+@keyframes modal-pop {
+  from {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-title {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--title);
+}
+
+.modal-message {
+  margin: 0 0 22px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.modal-message strong {
+  color: var(--title);
+  font-size: 1.1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-actions .btn {
+  flex: 1;
+}
+
+/* --------------------------------------------------------------- responsive */
+
+@media (max-width: 730px) {
+  .game-area {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: 450px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .guide-layout {
+    flex-direction: column;
+  }
+}
+
+/* Vista previa en el menú (?demo): solo el tablero */
+.demo .header,
+.demo .status,
+.demo .sidebar,
+.demo .guide-layout,
+.demo .modal-overlay {
+  display: none;
+}
+
+.demo .page {
+  padding: 12px;
+}

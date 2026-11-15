@@ -2,8 +2,10 @@
 // Pinta el selector de modo, el de velocidad y el botón de iniciar/parar.
 // El juego solo tiene que dar step(modo, { instant }): hace UNA jugada y devuelve
 // true si se puede seguir o false si ha terminado. Puede ser async (por las animaciones).
+// Cada velocidad es el tiempo en ms entre jugadas, o { ms, instant: true } si además el juego
+// puede saltarse las animaciones. Con 0 se hacen todas las jugadas que quepan sin pausa.
 
-const SPEEDS = { Lento: 400, Rápido: 120, Máximo: 0 };
+const SPEEDS = { Slow: 400, Fast: 120, Full: 40 };
 const LABELS = {
   title: 'Jugador automático',
   mode: 'Modo',
@@ -85,20 +87,22 @@ export function createAutoPanel(container, options) {
   async function loop(id) {
     try {
       while (running && id === run) {
-        const instant = speeds[speed] === 0;
-        // En "Máximo" se hacen varias jugadas seguidas antes de dejar respirar al navegador
+        const config = speeds[speed];
+        const ms = typeof config === 'number' ? config : config.ms;
+        const instant = typeof config === 'number' ? config === 0 : !!config.instant;
+        // Sin pausa se hacen varias jugadas seguidas antes de dejar respirar al navegador
         const started = performance.now();
         let more = true;
         do {
           more = await step(mode, { instant });
           if (!running || id !== run) return;
-        } while (more && instant && performance.now() - started < 12);
+        } while (more && ms === 0 && performance.now() - started < 12);
 
         if (!more) {
           stop();
           return;
         }
-        await sleep(instant ? 0 : speeds[speed]);
+        await sleep(ms);
       }
     } catch (error) {
       console.error(error);

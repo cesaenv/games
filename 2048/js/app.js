@@ -332,7 +332,7 @@ class Game2048 {
 
   _showGameOverModal(score) {
     this.gameOverMessageEl.innerHTML = "";
-    this.gameOverMessageEl.append("No more moves left. Final score: ");
+    this.gameOverMessageEl.append("No more moves left.", document.createElement("br"), "Final score: ");
     const strong = document.createElement("strong");
     strong.textContent = String(score);
     this.gameOverMessageEl.append(strong);

@@ -55,10 +55,10 @@ export const KEY_TO_DIRECTION = {
 export const AI_MODES = ["Random", "Algorithm", "Smart"];
 export const DEFAULT_AI_MODE = "Random";
 
-// Delay in ms between AI moves. "Full" runs with no animation and no delay.
+// Delay in ms between AI moves. "Full" skips the animations but keeps a short pause so the moves can be followed.
 export const AI_SPEEDS = {
   Slow: 400,
   Fast: 120,
-  Full: 0,
+  Full: { ms: 40, instant: true },
 };
 export const DEFAULT_AI_SPEED = "Fast";

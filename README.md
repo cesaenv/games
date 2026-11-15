@@ -6,6 +6,7 @@ Por ahora:
 
 - 2048
 - Snake
+- Buscaminas
 
 ## Cómo está organizado
 
@@ -47,3 +48,7 @@ Es la versión web de mi proyecto 2048 del máster (la carpeta `docs/`). Incluye
 ## Sobre el Snake
 
 Tiene tres jugadores automáticos. Random elige al azar entre las direcciones en las que no choca al momento. Algorithm va por el camino más corto a la comida. Smart sigue un recorrido que pasa por todas las casillas y se salta trozos cuando puede, así que acaba llenando el tablero.
+
+## Sobre el Buscaminas
+
+Tablero de 16x16 con 40 minas. La primera casilla que se destapa nunca es una mina. Los tres jugadores automáticos solo miran lo que vería una persona. Random destapa casillas al azar. Algorithm usa la regla básica (si a un número le faltan tantas minas como casillas tiene, todas son minas; si ya no le falta ninguna, el resto son seguras) y adivina cuando no hay nada seguro. Smart añade la deducción entre números vecinos y, cuando tiene que adivinar, calcula el riesgo de cada casilla probando todas las colocaciones de minas posibles.

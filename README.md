@@ -7,10 +7,11 @@ Por ahora:
 - 2048
 - Snake
 - Buscaminas
+- Tetris
 
 ## Cómo está organizado
 
-Cada juego es una carpeta con su `index.html`. Lo común está en `shared/` (la cabecera, el botón de tema y el panel de jugador automático) y el menú es el `index.html` de la raíz.
+Cada juego es una carpeta con su `index.html`. Lo común está en `shared/` (la cabecera, el botón de tema, el panel de jugador automático y los estilos de marcadores, botones y avisos) y el menú es el `index.html` de la raíz.
 
 Los colores y la tipografía no están en este repo. Cada página carga `https://cesaenv.github.io/theme.css`, que es el mismo archivo que usa mi web, así que si cambio el diseño allí se cambia aquí también. Por eso en los juegos uso solo las variables del tema (`--bg`, `--surface`, `--accent`...) y nunca colores sueltos. Si cambio el valor de una variable no pasa nada, pero si la renombro o la borro hay que revisar los juegos.
 
@@ -33,6 +34,7 @@ y abrir http://localhost:8000. Hay que hacerlo así porque los módulos de JavaS
    ```html
    <link rel="stylesheet" href="https://cesaenv.github.io/theme.css" />
    <link rel="stylesheet" href="../shared/games.css" />
+   <link rel="stylesheet" href="../shared/ui.css" />
    <script src="../shared/chrome.js"></script>
    ```
 
@@ -52,3 +54,7 @@ Tiene tres jugadores automáticos. Random elige al azar entre las direcciones en
 ## Sobre el Buscaminas
 
 Tablero de 16x16 con 40 minas. La primera casilla que se destapa nunca es una mina. Los tres jugadores automáticos solo miran lo que vería una persona. Random destapa casillas al azar. Algorithm usa la regla básica (si a un número le faltan tantas minas como casillas tiene, todas son minas; si ya no le falta ninguna, el resto son seguras) y adivina cuando no hay nada seguro. Smart añade la deducción entre números vecinos y, cuando tiene que adivinar, calcula el riesgo de cada casilla probando todas las colocaciones de minas posibles.
+
+## Sobre el Tetris
+
+Tablero de 10x20 con las siete piezas, que salen de una bolsa barajada. La IA decide dónde colocar cada pieza y luego la gira, la mueve y la baja paso a paso. Random elige una colocación al azar y pierde enseguida. Algorithm puntúa cada colocación por la altura, los huecos, lo lisa que queda la superficie y las líneas que completa, mirando solo la pieza actual. Smart usa la misma puntuación pero mira también la pieza siguiente, y con eso casi no pierde nunca.

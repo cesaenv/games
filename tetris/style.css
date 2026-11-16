@@ -1,0 +1,87 @@
+/* Colores de las piezas. Hay que distinguir siete, así que no salen del tema, pero hay una
+   versión para cada tema para que se lean bien en los dos. */
+:root {
+  --piece-i: #4fd1c5;
+  --piece-o: #f0d060;
+  --piece-t: #a58bff;
+  --piece-s: #5fd08a;
+  --piece-z: #ff7b7b;
+  --piece-j: #6cb4ff;
+  --piece-l: #ff9f5a;
+}
+
+:root[data-theme='light'] {
+  --piece-i: #0e7a74;
+  --piece-o: #a08000;
+  --piece-t: #5b3fd6;
+  --piece-s: #1f7a45;
+  --piece-z: #b3261e;
+  --piece-j: #1d5fbf;
+  --piece-l: #a34a00;
+}
+
+.page {
+  --main-width: 300px;
+  --page-width: 640px;
+  --sidebar-top: 58px;
+}
+
+.board {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 2;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.next {
+  padding: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-align: center;
+}
+
+.next canvas {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 6px auto 0;
+}
+
+/* Botones para móvil: solo donde se toca la pantalla */
+.touch {
+  display: none;
+  width: 100%;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.touch .btn {
+  flex: 1;
+  padding: 0.7rem 0;
+  font-size: 1.1rem;
+  touch-action: manipulation;
+}
+
+@media (pointer: coarse) {
+  .touch {
+    display: flex;
+  }
+}
+
+/* En la vista previa el tablero tiene que caber en el alto del recuadro */
+.demo .main {
+  width: 100%;
+  align-items: center;
+}
+
+.demo .board {
+  width: auto;
+  max-width: 100%;
+  height: calc(100vh - 24px);
+}
+
+.demo .touch {
+  display: none;
+}

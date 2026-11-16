@@ -1,0 +1,66 @@
+.page {
+  --main-width: 460px;
+  --page-width: 760px;
+}
+
+.score-panel {
+  min-width: 56px;
+  padding: 6px 8px;
+}
+
+.board {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 8px;
+  border: 1px solid var(--border);
+  background: var(--border);
+}
+
+.card {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  /* Boca abajo */
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  color: var(--text);
+  font: inherit;
+  /* El tamaño del símbolo sigue al del tablero */
+  font-size: calc(100cqw / 4 * 0.45);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover:not(.up):not(.matched) {
+  background: color-mix(in srgb, var(--accent) 28%, var(--surface));
+}
+
+/* Boca arriba */
+.card.up {
+  background: var(--surface);
+  transform: scale(1.04);
+  cursor: default;
+}
+
+/* Pareja encontrada */
+.card.matched {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  cursor: default;
+}
+
+.demo .main {
+  width: 100%;
+}
+
+.demo .card {
+  cursor: default;
+}

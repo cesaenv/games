@@ -8,6 +8,7 @@ Por ahora:
 - Snake
 - Buscaminas
 - Tetris
+- Memoria
 
 ## Cómo está organizado
 
@@ -58,3 +59,7 @@ Tablero de 16x16 con 40 minas. La primera casilla que se destapa nunca es una mi
 ## Sobre el Tetris
 
 Tablero de 10x20 con las siete piezas, que salen de una bolsa barajada. La IA decide dónde colocar cada pieza y luego la gira, la mueve y la baja paso a paso. Random elige una colocación al azar y pierde enseguida. Algorithm puntúa cada colocación por la altura, los huecos, lo lisa que queda la superficie y las líneas que completa, mirando solo la pieza actual. Smart usa la misma puntuación pero mira también la pieza siguiente, y con eso casi no pierde nunca.
+
+## Sobre la memoria
+
+Tablero de 4x4 con 8 parejas. Los tres jugadores se diferencian en cuántas cartas recuerdan: Random ninguna, Algorithm las dos últimas y Smart todas. El récord es el menor número de intentos.

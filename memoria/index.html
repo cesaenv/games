@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memoria · Celia Sáenz Villalta</title>
+  <meta name="description" content="Encuentra las parejas, a mano o dejando que se resuelva solo." />
+  <link rel="stylesheet" href="https://cesaenv.github.io/theme.css" />
+  <link rel="stylesheet" href="../shared/games.css" />
+  <link rel="stylesheet" href="../shared/ui.css" />
+  <link rel="stylesheet" href="../shared/autoplay.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://cesaenv.github.io/favicon.svg" type="image/svg+xml" />
+  <script src="../shared/chrome.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="game-area">
+      <main class="main">
+        <header class="header">
+          <h1 class="title">Memoria</h1>
+          <div class="scores">
+            <div class="score-panel">
+              <span class="score-label">Intentos</span>
+              <span class="score-value" id="moves">0</span>
+            </div>
+            <div class="score-panel">
+              <span class="score-label">Parejas</span>
+              <span class="score-value" id="pairs">0</span>
+            </div>
+            <div class="score-panel">
+              <span class="score-label">Tiempo</span>
+              <span class="score-value" id="time">0</span>
+            </div>
+            <div class="score-panel">
+              <span class="score-label">Récord</span>
+              <span class="score-value" id="best">-</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="board" id="board" role="group" aria-label="Cartas"></div>
+
+        <p class="status" id="status" aria-live="polite"></p>
+      </main>
+
+      <aside class="sidebar">
+        <button class="btn" id="new-game">Nueva partida</button>
+        <div id="auto-panel"></div>
+        <p class="help">Gira dos cartas por turno. El récord es el menor número de intentos. Random no recuerda nada, Algorithm recuerda las dos últimas cartas y Smart las recuerda todas.</p>
+      </aside>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="game-over-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="game-over-title">
+      <h2 class="modal-title" id="game-over-title">Fin de la partida</h2>
+      <p class="modal-message" id="game-over-message"></p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="game-over-close">Cerrar</button>
+        <button class="btn" id="game-over-new-game">Nueva partida</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

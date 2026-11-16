@@ -9,6 +9,7 @@ Por ahora:
 - Buscaminas
 - Tetris
 - Memoria
+- Tres en raya
 
 ## Cómo está organizado
 
@@ -63,3 +64,7 @@ Tablero de 10x20 con las siete piezas, que salen de una bolsa barajada. La IA de
 ## Sobre la memoria
 
 Tablero de 4x4 con 8 parejas. Los tres jugadores se diferencian en cuántas cartas recuerdan: Random ninguna, Algorithm las dos últimas y Smart todas. El récord es el menor número de intentos.
+
+## Sobre el tres en raya
+
+Juegas con la X contra la máquina, y el modo decide cómo juega ella. Con Iniciar, la máquina juega las dos partes. Random elige una casilla libre al azar. Algorithm gana si puede, si no bloquea, y si no prefiere el centro y las esquinas. Smart usa minimax, que prueba todas las partidas posibles, y nunca pierde.

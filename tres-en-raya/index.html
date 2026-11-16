@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tres en raya · Celia Sáenz Villalta</title>
+  <meta name="description" content="El tres en raya de siempre, contra la máquina o dejando que jueguen solas." />
+  <link rel="stylesheet" href="https://cesaenv.github.io/theme.css" />
+  <link rel="stylesheet" href="../shared/games.css" />
+  <link rel="stylesheet" href="../shared/ui.css" />
+  <link rel="stylesheet" href="../shared/autoplay.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="https://cesaenv.github.io/favicon.svg" type="image/svg+xml" />
+  <script src="../shared/chrome.js"></script>
+</head>
+<body>
+  <div class="page">
+    <div class="game-area">
+      <main class="main">
+        <header class="header">
+          <h1 class="title">Tres en raya</h1>
+          <div class="scores">
+            <div class="score-panel">
+              <span class="score-label">X</span>
+              <span class="score-value" id="score-x">0</span>
+            </div>
+            <div class="score-panel">
+              <span class="score-label">Empates</span>
+              <span class="score-value" id="score-draw">0</span>
+            </div>
+            <div class="score-panel">
+              <span class="score-label">O</span>
+              <span class="score-value" id="score-o">0</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="board" id="board" role="group" aria-label="Tablero del tres en raya"></div>
+
+        <p class="status" id="status" aria-live="polite"></p>
+      </main>
+
+      <aside class="sidebar">
+        <button class="btn" id="new-game">Nueva partida</button>
+        <div id="auto-panel"></div>
+        <p class="help">Juegas con la X. El modo elige cómo juega la máquina. Con Iniciar, la máquina juega las dos partes.</p>
+      </aside>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
